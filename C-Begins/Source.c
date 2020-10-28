@@ -96,16 +96,8 @@ int arrayMergeSorted(int A[], int n, int B[], int k, int C[])
 			ic++;
 		}
 	}
-	for (; ia < n; ia++)
-	{
-		C[ic] = A[ia];
-		ic++;
-	}
-	for (; ib < n; ib++)
-	{
-		C[ic] = B[ib];
-		ic++;
-	}
+	while (ia < n) C[ic++] = A[ia++];
+	while (ib < k) C[ic++] = B[ib++];
 	return ic;
 }
 
