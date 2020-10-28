@@ -8,7 +8,7 @@ void InputInt(int A[], int n)
 	printf("Enter array elements:\n");
 	for (i = 0; i < n; i++)
 	{
-		scanf_s("%d ", &(A[i]));
+		scanf_s("%d", &(A[i]));
 	}
 }
 void InputDouble(double A[], int n)
@@ -63,20 +63,62 @@ int arrayUnique(int A[], int n, int B[])
 	}
 	return k;
 }
-int arrayUniqueBySorting(int A[], int n, int B[])
+//int arrayUniqueBySorting(int A[], int n, int B[])
+//{
+//
+//}
+int arrayMergeSorted(int A[], int n, int B[], int k, int C[])
 {
+	int ia, ib, ic;
 
+	ia = 0;
+	ib = 0;
+	ic = 0;
+	while ((ia < n) && (ib < k))
+	{
+		if (A[ia] == B[ib])
+		{
+			C[ic] = A[ia];
+			ia++;
+			ib++;
+			ic++;
+		}
+		else if (A[ia] < B[ib])
+		{
+			C[ic] = A[ia];
+			ia++;
+			ic++;
+		}
+		else
+		{
+			C[ic] = B[ib];
+			ib++;
+			ic++;
+		}
+	}
+	for (; ia < n; ia++)
+	{
+		C[ic] = A[ia];
+		ic++;
+	}
+	for (; ib < n; ib++)
+	{
+		C[ic] = B[ib];
+		ic++;
+	}
+	return ic;
 }
-
 
 void main()
 {
 	int Array1[1000], n;
 	int Array2[1000], k;
+	int Array3[1000], m;
 
-	n = 8;
+	n = 5;
+	k = 5;
 	InputInt(Array1, n);
-	//InputInt(Array2, k);
-	k = arrayUnique(Array1, n, Array2);
-	PrintInt(Array2, k);
+	InputInt(Array2, k);
+	m = arrayMergeSorted(Array1, n, Array2, k, Array3);
+	PrintInt(Array3, m);
 }
