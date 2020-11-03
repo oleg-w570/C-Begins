@@ -63,10 +63,6 @@ int arrayUnique(int A[], int n, int B[])
 	}
 	return k;
 }
-//int arrayUniqueBySorting(int A[], int n, int B[])
-//{
-//
-//}
 int arrayMergeSorted(int A[], int n, int B[], int k, int C[])
 {
 	int ia, ib, ic;
