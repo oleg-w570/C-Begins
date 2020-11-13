@@ -26,6 +26,7 @@ void bubbleSort(int A[], int n)
 {
 	int i, j, temp;
 	bool wasSwap;
+	j = 0;
 
 	do
 	{
@@ -42,6 +43,41 @@ void bubbleSort(int A[], int n)
 		}
 		n--;
 	} while ((n > 2) && (wasSwap));
+}
+
+void quickSort(int A[], int right, int left)
+{
+	int mid, i, j, temp;
+	
+	mid = A[(left + right) / 2];
+	i = left;
+	j = right;
+
+	while (i <= j)
+	{
+		while (A[i] < mid)
+		{
+			i++;
+		}
+		while (A[j] > mid)
+		{
+			j--;
+		}
+		if (i <= j) 
+		{
+			temp = A[i];
+			A[i] = A[j];
+			A[j] = temp;
+			i++;
+			j--;
+		}
+		
+	}
+	
+	if (left < j)
+		quickSort(A, j, left);
+	if (i < right)
+		quickSort(A, right, i);
 }
 
 void menu() 
@@ -91,6 +127,11 @@ void main()
 			break;
 		}
 		case 4: {
+			if (wasInput)
+				quickSort(Arr, n - 1, 0);
+			else
+				printf("Please, input array\n");
+			print(Arr, n);
 			break;
 		}
 		case 0: {
