@@ -24,25 +24,37 @@ void print(int A[], int n)
 
 void bubbleSort(int A[], int n)
 {
-	int i, j, temp;
-	bool wasSwap;
+	int i, j, k, inf, sup, temp;
+
 	j = 0;
+	k = 0;
+	inf = 0;
 
 	do
 	{
-		wasSwap = false;
-		for (i = 1; i < n; i++)
+		for (i = inf; i < n - j - 1; i++) // всплывает
+		{
+			if (A[i] > A[i + 1])
+			{
+				temp = A[i + 1];
+				A[i + 1] = A[i];
+				A[i] = temp;
+				k = i;
+			}
+		}
+		sup = k;
+		for (i = sup; i > 0; i--) // тонет
 		{
 			if (A[i] < A[i - 1])
 			{
 				temp = A[i - 1];
 				A[i - 1] = A[i];
 				A[i] = temp;
-				wasSwap = true;
+				k = i;
 			}
 		}
-		n--;
-	} while ((n > 2) && (wasSwap));
+		inf = k;
+	} while (inf < sup);
 }
 
 void quickSort(int A[], int right, int left)
@@ -101,7 +113,7 @@ void main()
 	{
 		menu();
 		scanf_s("%d", &t);
-		srand(100);
+		srand(10);
 
 		switch (t)
 		{
