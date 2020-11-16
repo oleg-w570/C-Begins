@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include "stdio.h"
+#include "stdlib.h"
 #include "stdbool.h"
 #include "math.h"
 
@@ -29,10 +30,11 @@ void bubbleSort(int A[], int n)
 	j = 0;
 	k = 0;
 	inf = 0;
+	sup = n - 1;
 
 	do
 	{
-		for (i = inf; i < n - j - 1; i++) // всплывает
+		for (i = inf; i < sup; i++) // всплывает
 		{
 			if (A[i] > A[i + 1])
 			{
@@ -43,7 +45,7 @@ void bubbleSort(int A[], int n)
 			}
 		}
 		sup = k;
-		for (i = sup; i > 0; i--) // тонет
+		for (i = sup; i > inf; i--) // тонет
 		{
 			if (A[i] < A[i - 1])
 			{
